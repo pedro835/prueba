@@ -1,0 +1,13 @@
+package com.grupodot.repository;
+
+import java.util.Optional;
+
+import org.springframework.data.repository.CrudRepository;
+
+import com.grupodot.entities.Prestamo;
+
+public interface PrestamoRepositorio extends CrudRepository<Prestamo, Long> {
+	
+	Void save(Optional<Prestamo> prestamoToUpdate);
+
+}

@@ -1,0 +1,34 @@
+package com.grupodot.controller.impl;
+
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+
+import com.grupodot.controller.PrestamoController;
+import com.grupodot.entities.Prestamo;
+import com.grupodot.service.PrestamoService;
+
+public class PrestamoControllerImpl implements PrestamoController {
+	
+	@Autowired		
+	PrestamoService prestamoService;
+
+	@Override
+	@RequestMapping(value="/prestamo")
+	public List<Prestamo> getprestamos() {
+		return prestamoService.findAllPrestamos();
+	}
+
+	@Override
+	@RequestMapping(value="/prestamo/{id}")
+	public Optional<Prestamo> getPrestamoById(Long id) {
+		
+		return prestamoService.findPrestamoById(id);
+	}
+	
+	
+
+}

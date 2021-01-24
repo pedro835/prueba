@@ -1,0 +1,5 @@
+package com.grupodot.repository;
+
+public interface PrestamoRepositorio {
+
+}
