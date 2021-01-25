@@ -27,17 +27,44 @@
                     style="stroke: none; fill: #fff;"></path>
             </svg></div>
     </header>
-        <div id="solicitud">
-            Monto: <input type="numeric" name="monto">
+        <h2 class="titulo">PRESTAMO</h2>
+        <div class="servicio-cont">
+            <div class="servicio-ind">
+            <div id="solicitud">
+            Monto a Solicitar: <input type="numeric" name="monto">
             <button onclick="solicitarPrestamo()">Solicitar</button>
+            <br> 
         </div>
         <div id="resultado" style="display: none;">
             Socio: <span id="socio"></span><br>
             Tasa de Interés: <span id="tasa"></span>
         </div>
         <div id="error" style="display: none;">
-            Error consultando el servicio
+            No hay socio disponible...
+            <p> </p>
         </div>
+         <p> </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <footer>
+        <div class="contenedor-footer">
+            <div class="content-foo">
+                <h4>Phone</h4>
+                <p>3195679842</p>
+            </div>
+            <div class="content-foo">
+                <h4>Email</h4>
+                <p>lildrope7@gmail.com</p>
+            </div>
+            <div class="content-foo">
+                <h4>Location</h4>
+                <p>Bogotá - Colombia</p>
+            </div>
+        </div>
+        <h2 class="titulo-final">&copy; LilDrope | Pedro López</h2>
+    </footer>
     </body>
     <script>
         const solicitarPrestamo = async() => {
@@ -55,4 +82,5 @@
             }
         }
     </script>
+
 </HTML>
