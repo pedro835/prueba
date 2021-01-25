@@ -27,6 +27,15 @@ public class PrestamoServiceImpl implements PrestamoService {
 		
 	}
 	
-	
+	@Override
+	public Prestamo obtenerPrestamo(Float value ){
+	    Prestamo mayor = null;
+	    for( Prestamo prestamo : prestamoRepositorio.findAll() ){
+		    if( prestamo.getMontoMaxDispo() >= value && prestamo.getTasaInteres() < mayor.getTasaInteres() ){
+		        mayor = prestamo;
+		    }
+		}
+        return mayor;
+	}
 
 }

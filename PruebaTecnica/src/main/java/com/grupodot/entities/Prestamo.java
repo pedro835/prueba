@@ -18,7 +18,7 @@ public class Prestamo {
 	private long id;
 	
 	@Column(name="socio")
-	private String socio;
+	public String socio;
 	
 	@Column(name="tasa_interes")
 	private float tasaInteres;

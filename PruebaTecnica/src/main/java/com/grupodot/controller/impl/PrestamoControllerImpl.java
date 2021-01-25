@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.grupodot.controller.PrestamoController;
 import com.grupodot.entities.Prestamo;
@@ -28,6 +29,17 @@ public class PrestamoControllerImpl implements PrestamoController {
 		return prestamoService.findPrestamoById(id);
 	}
 	
+	@Override
+	@RequestMapping( value = "/prestamo/obtenerPrestamo" , method = RequestMethod.GET, produces = "application/json")
+	public Prestamo obtenerPrestamo(@RequestParam(name="valor") Float value ){
+	      return prestamoService.obtenerPrestamo(value);	       
+	 }
 	
-	
+	@RequestMapping(value = "/test", method = RequestMethod.GET, produces = "application/json")
+	@Override
+	public String test() {
+	    return "Test done";
+	}
 }
+
+	

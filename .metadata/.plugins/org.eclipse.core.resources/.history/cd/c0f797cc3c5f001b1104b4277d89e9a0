@@ -1,0 +1,18 @@
+package com.grupodot.service;
+
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.web.bind.annotation.RequestParam;
+
+import com.grupodot.entities.Prestamo;
+
+public interface PrestamoService {
+	
+	public List<Prestamo> findAllPrestamos();
+	
+	public Optional<Prestamo> findPrestamoById(Long id);
+	
+	public Prestamo obtenerPrestamo(Float value );
+
+}
