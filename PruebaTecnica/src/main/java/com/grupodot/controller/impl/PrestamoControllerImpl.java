@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -14,6 +15,7 @@ import com.grupodot.entities.Prestamo;
 import com.grupodot.service.PrestamoService;
 
 @RestController
+@CrossOrigin(origins = "*", methods= {RequestMethod.GET, RequestMethod.POST})
 public class PrestamoControllerImpl implements PrestamoController {
 	
 	@Autowired		

@@ -31,16 +31,19 @@
         <div class="servicio-cont">
             <div class="servicio-ind">
             <div id="solicitud">
-            Monto a Solicitar: <input type="numeric" name="monto">
-            <button onclick="solicitarPrestamo()">Solicitar</button>
+            <h4> Monto a Solicitar: <input type="numeric" name="monto"></h4>
+            <h4><button onclick="solicitarPrestamo()">Solicitar</button></h4>
             <br> 
         </div>
         <div id="resultado" style="display: none;">
             Socio: <span id="socio"></span><br>
+            Cuota Mensual: <span id="cuota"></span><br>
+            Pago Total: <span id="total"></span><br>
             Tasa de Interés: <span id="tasa"></span>
         </div>
+        <div id="nosocio" style="display: none;">No hay socio disponible</div>
         <div id="error" style="display: none;">
-            No hay socio disponible...
+            Error consultando el servicio...
             <p> </p>
         </div>
          <p> </p>
@@ -63,23 +66,35 @@
                 <p>Bogotá - Colombia</p>
             </div>
         </div>
-        <h2 class="titulo-final">&copy; LilDrope | Pedro López</h2>
+        <h2 class="titulo-final">&copy; @LilDrope | Pedro López</h2>
     </footer>
     </body>
     <script>
-        const solicitarPrestamo = async() => {
+        const solicitarPrestamo = () => {
             var monto = document.querySelector("#solicitud [name='monto']").value
-            try {
-                document.getElementById("resultado").style.display = "block"
-                document.getElementById("error").style.display = "none"
-                const respuesta = await fetch('http://localhost:8888/prestamo/obtenerPrestamo?monto='+monto)
-                const respuestaJson = respuesta.json
-                document.getElementById("socio").text = respuestaJson.socio
-                document.getElementById("tasa").text = respuestaJson.tasa
-            } catch ( error ) {
+            document.getElementById("resultado").style.display = "block"
+            document.getElementById("error").style.display = "none"
+            fetch('http://localhost:8888/prestamo/obtenerPrestamo?valor='+monto)
+            .then( respuesta => respuesta.json() )
+            .catch( error => {
                 document.getElementById("resultado").style.display = "none"
+                document.getElementById("nosocio").style.display = "none"
                 document.getElementById("error").style.display = "block"
-            }
+            } )
+            .then( respuesta => {
+                if( respuesta === undefined || respuesta.socio === undefined){
+                    document.getElementById("nosocio").style.display = "block"
+                    document.getElementById("resultado").style.display = "none"
+                } else {
+                    document.getElementById("socio").innerHTML = respuesta.socio
+                    document.getElementById("cuota").innerHTML = respuesta.cuotaMensual
+                    document.getElementById("total").innerHTML = respuesta.pagoTotal
+                    document.getElementById("tasa").innerHTML = respuesta.tasaInteres
+                    document.getElementById("resultado").style.display = "block"
+                    document.getElementById("nosocio").style.display = "none"
+                    document.getElementById("error").style.display = "none"
+                }
+            })
         }
     </script>
 
