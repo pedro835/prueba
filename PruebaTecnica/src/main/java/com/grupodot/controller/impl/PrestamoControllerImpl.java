@@ -11,15 +11,20 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.grupodot.controller.PrestamoController;
+import com.grupodot.dto.ResumenPrestamo;
 import com.grupodot.entities.Prestamo;
 import com.grupodot.service.PrestamoService;
+import com.grupodot.service.ResumenPrestamoService;
 
 @RestController
-@CrossOrigin(origins = "*", methods= {RequestMethod.GET, RequestMethod.POST})
+@CrossOrigin(origins = "*", methods= {RequestMethod.GET,RequestMethod.POST})
 public class PrestamoControllerImpl implements PrestamoController {
 	
 	@Autowired		
 	PrestamoService prestamoService;
+	
+	@Autowired
+	ResumenPrestamoService resumenPrestamoService;
 
 	@Override
 	@RequestMapping(value="/prestamo", method = RequestMethod.GET, produces = "application/json")
@@ -35,11 +40,13 @@ public class PrestamoControllerImpl implements PrestamoController {
 	
 	@Override
 	@RequestMapping( value = "/prestamo/obtenerPrestamo" , method = RequestMethod.GET, produces = "application/json")
-	public Prestamo obtenerPrestamo(@RequestParam(name="valor") Float value ){
-	      return prestamoService.obtenerPrestamo(value);	       
+	public ResumenPrestamo obtenerPrestamo(@RequestParam(name="valor") Float value ){
+	      Prestamo p = prestamoService.obtenerPrestamo(value);
+	      ResumenPrestamo r = resumenPrestamoService.obtenerResumen(p, value);
+	      return r;
 	 }
 	
-	@RequestMapping(value = "/test", method = RequestMethod.GET, produces = "application/json")
+	@RequestMapping(value = "/test", method = RequestMethod.GET, produces = "text/plain")
 	@Override
 	public String test() {
 	    return "Test done";

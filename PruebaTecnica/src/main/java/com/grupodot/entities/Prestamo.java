@@ -57,6 +57,12 @@ public class Prestamo {
 	public void setMontoMaxDispo(double montoMaxDispo) {
 		this.montoMaxDispo = montoMaxDispo;
 	}
+
+	@Override
+	public String toString() {
+		return "Prestamo [id=" + id + ", socio=" + socio + ", tasaInteres=" + tasaInteres + ", montoMaxDispo="
+				+ montoMaxDispo + "]";
+	}
 	
 	
 	

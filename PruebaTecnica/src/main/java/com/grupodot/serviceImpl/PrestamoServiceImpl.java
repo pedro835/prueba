@@ -1,5 +1,6 @@
 package com.grupodot.serviceImpl;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 
@@ -29,17 +30,8 @@ public class PrestamoServiceImpl implements PrestamoService {
 	
 	@Override
 	public Prestamo obtenerPrestamo(Float value ){
-	    Prestamo mayor = null;
-	    for( Prestamo prestamo : prestamoRepositorio.findAll() ){
-	    	if(mayor == null) {
-	    		mayor = prestamo;
-	    		
-	    	}else if(prestamo.getMontoMaxDispo() >= value && prestamo.getTasaInteres() < mayor.getTasaInteres() ){
-			        mayor = prestamo;
-			    }
-			}
-	        return mayor;
-	    	
+	    Optional<Prestamo> mayor = prestamoRepositorio.findAll().stream().filter( p -> p.getMontoMaxDispo() >= value ).min( Comparator.comparing( Prestamo::getTasaInteres ) );
+	    return ( mayor.isPresent() ) ? mayor.get() : null;
 	}
 
 }
