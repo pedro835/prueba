@@ -31,11 +31,15 @@ public class PrestamoServiceImpl implements PrestamoService {
 	public Prestamo obtenerPrestamo(Float value ){
 	    Prestamo mayor = null;
 	    for( Prestamo prestamo : prestamoRepositorio.findAll() ){
-		    if( prestamo.getMontoMaxDispo() >= value && prestamo.getTasaInteres() < mayor.getTasaInteres() ){
-		        mayor = prestamo;
-		    }
-		}
-        return mayor;
+	    	if(mayor == null) {
+	    		mayor = prestamo;
+	    		
+	    	}else if(prestamo.getMontoMaxDispo() >= value && prestamo.getTasaInteres() < mayor.getTasaInteres() ){
+			        mayor = prestamo;
+			    }
+			}
+	        return mayor;
+	    	
 	}
 
 }

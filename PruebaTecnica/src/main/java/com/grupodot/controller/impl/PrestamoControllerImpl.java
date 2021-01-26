@@ -7,11 +7,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.grupodot.controller.PrestamoController;
 import com.grupodot.entities.Prestamo;
 import com.grupodot.service.PrestamoService;
 
+@RestController
 public class PrestamoControllerImpl implements PrestamoController {
 	
 	@Autowired		
