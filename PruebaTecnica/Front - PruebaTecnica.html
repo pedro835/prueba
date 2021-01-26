@@ -31,17 +31,27 @@
         <div class="servicio-cont">
             <div class="servicio-ind">
             <div id="solicitud">
-            <h4> Monto a Solicitar: <input type="numeric" name="monto"></h4>
-            <h4><button onclick="solicitarPrestamo()">Solicitar</button></h4>
+            <h4> MONTO A SOLICITAR : <input style="color:#7d2181"; type="numeric" name="monto"></h4><br>
+            <h4><button onclick="solicitarPrestamo()">SOLICITAR</button></h4>
             <br> 
         </div>
         <div id="resultado" style="display: none;">
-            Socio: <span id="socio"></span><br>
-            Cuota Mensual: <span id="cuota"></span><br>
-            Pago Total: <span id="total"></span><br>
-            Tasa de Interés: <span id="tasa"></span>
-        </div>
-        <div id="nosocio" style="display: none;">No hay socio disponible</div>
+        <table border="3"align="justify">
+            <tr>
+            <td><h3><p style="color:#7d2181;"><b>SOCIO </h3><td></p>
+            <td><h3><p style="color:#7d2181;"><b>CUOTA MENSUAL </h3><td></p>
+            <td><h3><p style="color:#7d2181;"><b>PAGO TOTAL </h3><td></p>
+            <td><h3><p style="color:#7d2181;"><b>TASA DE INTERES </h3><td></p>
+            </tr>
+            <tr>
+            <td id="socio"><td>
+            <td id="cuota"><td>
+            <td id="total"><td>
+            <td id="tasa"><td>
+            </tr>
+         </div>
+        </table>       
+        <div id="nosocio" style="display: none;">No hay socio disponible</div></p>
         <div id="error" style="display: none;">
             Error consultando el servicio...
             <p> </p>
